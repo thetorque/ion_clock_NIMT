@@ -21,6 +21,7 @@ timeout = 20
 
 from labrad.server import LabradServer, setting, Signal
 from labrad import types as T
+from labrad.units import WithUnit
 from twisted.internet.defer import Deferred, returnValue, inlineCallbacks
 from twisted.internet.task import LoopingCall
 import time
@@ -297,6 +298,11 @@ class NormalPMTFlow( LabradServer):
         yield self.pulser.add_ttl_pulse('DiffCountTrigger', self.collection_period, T.Value(10.0,'us'))
         yield self.pulser.add_ttl_pulse('866DP', T.Value(0.0,'us'), self.collection_period)
         yield self.pulser.add_ttl_pulse('Internal866', T.Value(0.0,'us'), self.collection_period)
+        
+        ### test add DDS
+        #yield self.pulser.add_dds_pulses('866DP',   T.Value(0.0,'us'), self.collection_period, T.Value(80.0,'MHz'), T.Value(-37.0,'dBm'))
+        #yield self.pulser.add_dds_pulses('866DP',   self.collection_period, self.collection_period*2, T.Value(80.0,'MHz'), T.Value(-36.0,'dBm'))
+        ###
         yield self.pulser.extend_sequence_length(2 * self.collection_period)
         yield self.pulser.program_sequence()
         yield self.pulser.start_infinite()

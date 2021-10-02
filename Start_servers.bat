@@ -1,1 +1,1 @@
-python C:\Users\ion_clock\Desktop\LatticeUmi\clients\node\node_client.py
+python "C:\Users\Yb Ion Clock\Desktop\ion_clock_mahidol\clients\node\node_client.py"

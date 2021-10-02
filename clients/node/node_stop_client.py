@@ -12,7 +12,7 @@ except:
     raise()
 
 nodeDict = {
-            'node ELI':
+            'node Yb_ion':
                 ['Data Vault',
                 'NI Analog Server',
                 'Andor Server',
