@@ -297,7 +297,7 @@ class NormalPMTFlow( LabradServer):
         yield self.pulser.add_ttl_pulse('DiffCountTrigger', T.Value(0.0,'us'), T.Value(10.0,'us'))
         yield self.pulser.add_ttl_pulse('DiffCountTrigger', self.collection_period, T.Value(10.0,'us'))
         yield self.pulser.add_ttl_pulse('866DP', T.Value(0.0,'us'), self.collection_period)
-        yield self.pulser.add_ttl_pulse('Internal866', T.Value(0.0,'us'), self.collection_period)
+        #yield self.pulser.add_ttl_pulse('Internal866', T.Value(0.0,'us'), self.collection_period)
         
         ### test add DDS
         #yield self.pulser.add_dds_pulses('866DP',   T.Value(0.0,'us'), self.collection_period, T.Value(80.0,'MHz'), T.Value(-37.0,'dBm'))

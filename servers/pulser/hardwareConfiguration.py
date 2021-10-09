@@ -62,20 +62,21 @@ class hardwareConfiguration(object):
     
     #name: (channelNumber, ismanual, manualstate,  manualinversion, autoinversion)
     channelDict = {
-	'''
-	1. 14.7 GHZ EOM
-	2. 2.2 GHz EOM
-	3. 369 nm AOM switch
-	4. 935 nm AOM switch
-	5. 399 nm shutter
-	6. CCD triggering
+	#'''
+	#1. 14.7 GHZ EOM
+	#2. 2.2 GHz EOM
+	#3. 369 nm AOM switch
+	#. 935 nm AOM switch
+	#5. 399 nm shutter
+	#6. CCD triggering
+#	
+#	#
+	#7. 435 nm AOM switch
+	#8. 369 nm pumping AOM switch
 	
-	
-	7. 435 nm AOM switch
-	8. 369 nm pumping AOM switch
-	
-	'''
+	            '866DP':channelConfiguration(0, False, False, False, False),
                    'ttl_0':channelConfiguration(8, False, False, False, False), ## camera
+                   
                    '147EOM':channelConfiguration(1, False, False, False, False),
                    '22EOM':channelConfiguration(2, False, False, False, False),
                    '369SW':channelConfiguration(3, False, False, False, False),
@@ -83,25 +84,25 @@ class hardwareConfiguration(object):
                    '399SW':channelConfiguration(5, False, False, False, False),
                    '435SW':channelConfiguration(6, False, False, False, False),
                    '369_pumpSW':channelConfiguration(7, False, False, False, False),
-                   '866DP':channelConfiguration(8, False, False, False, False),
+                   
 #                   '266_SB':channelConfiguration(9, False, False, False, False),
 #                   'SP1':channelConfiguration(10, False, False, False, False),
 #                   'SP2':channelConfiguration(11, False, False, False, False),
                    'AdvanceDDS':channelConfiguration(18, False, False, False, False),
                    'ResetDDS':channelConfiguration(19, False, False, False, False),
-                   'Internal866':channelConfiguration(0, False, False, False, False), ### triggering for analog board
+                   #'Internal866':channelConfiguration(8, False, False, False, False), ### triggering for analog board
                    'DiffCountTrigger':channelConfiguration(16, False, False, False, False), ### triggering for analog board
-                   'TimeResolvedCount':channelConfiguration(17, True, False, False, False), 
-                   'ReadoutCount':channelConfiguration(20, True, True, False, False),
+                   'TimeResolvedCount':channelConfiguration(17, False, False, False, False), 
+                   'ReadoutCount':channelConfiguration(20, False, False, False, False),
 #                   'B_z_sign':channelConfiguration(23, True, True, False, False), 
 #                   'dummy_clock':channelConfiguration(24, False, False, False, False), ## for plotting the clock purpose only 
                    
                 }
     #address, allowedfreqrange, allowedamplrange, frequency, amplitude, **args):
     ddsDict =   {
-                '866DP':ddsConfiguration(    0,  (70.0,90.0),   (-37.0,10.0),  80.0,   -33),
-                '935DDS':ddsConfiguration(    1,  (0.1,200.0),   (-37.0,10.0),  100.0,   0.0),
-                'trap_drive':ddsConfiguration(    2,  (0.1,200.0),   (-37.0,10.0),  200.0,   0.0),
+                'RFTrap':ddsConfiguration(    1,  (10.0,60.0),   (-37.0,10.0),  40.0,   0.0),
+                '935DDS':ddsConfiguration(    2,  (10,200.0),   (-37.0,10.0),  110.0,   0.0),
+                '369DDS':ddsConfiguration(    3,  (10,200.0),   (-37.0,10.0),  180.0,   0.0),
 #                  'DDS_3':dds Configuration(    3,  (0.1,300.0),   (-37.0,17.0),  43.0,   10.0),
 #                  'DDS_4':ddsConfiguration(    4,  (40.0,300.0),   (-37.0,17.0),  44.0,   10.0),
 #                  'DDS_5':ddsConfiguration(    5,  (40.0,300.0),   (-37.0,17.0),  45.0,   10.0),
