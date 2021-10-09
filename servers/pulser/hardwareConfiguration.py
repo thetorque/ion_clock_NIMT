@@ -100,9 +100,9 @@ class hardwareConfiguration(object):
                 }
     #address, allowedfreqrange, allowedamplrange, frequency, amplitude, **args):
     ddsDict =   {
-                'RFTrap':ddsConfiguration(    1,  (10.0,60.0),   (-37.0,10.0),  40.0,   0.0),
-                '935DDS':ddsConfiguration(    2,  (10,200.0),   (-37.0,10.0),  110.0,   0.0),
-                '369DDS':ddsConfiguration(    3,  (10,200.0),   (-37.0,10.0),  180.0,   0.0),
+                'RFTrap':ddsConfiguration(    4,  (10.0,60.0),   (-37.0,10.0),  40.0,   0.0),
+                '935DDS':ddsConfiguration(    5,  (10,200.0),   (-37.0,10.0),  110.0,   0.0),
+                '369DDS':ddsConfiguration(    6,  (10,200.0),   (-37.0,10.0),  180.0,   0.0),
 #                  'DDS_3':dds Configuration(    3,  (0.1,300.0),   (-37.0,17.0),  43.0,   10.0),
 #                  'DDS_4':ddsConfiguration(    4,  (40.0,300.0),   (-37.0,17.0),  44.0,   10.0),
 #                  'DDS_5':ddsConfiguration(    5,  (40.0,300.0),   (-37.0,17.0),  45.0,   10.0),

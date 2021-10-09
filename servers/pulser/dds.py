@@ -16,9 +16,11 @@ class DDS(LabradServer):
     @inlineCallbacks
     def initializeDDS(self):
         self.ddsLock = False
-        time.sleep(0.1)
+        time.sleep(0.5)
         self.api.initializeDDS()
-        time.sleep(0.1)
+        time.sleep(0.5)
+        self.api.initializeDDS()
+        time.sleep(0.5)
         self.api.initializeDDS()
         
         for name,channel in self.ddsDict.iteritems():
@@ -234,6 +236,7 @@ class DDS(LabradServer):
     @inlineCallbacks
     def _setLatticeParameters(self, channel, freq, ampl, parameter):
         #### calculate here
+        print "channel ", channel
         print "parameter is", parameter
         
         t1 = parameter[0]
@@ -246,7 +249,7 @@ class DDS(LabradServer):
         resolution = (max1 - min1) / float(2**16 - 1)
         ramp_rate = t1*resolution + min1
         
-        print "t1 in ramp rate is ", ramp_rate
+        #print "t1 in ramp rate is ", ramp_rate
         
         ###t2
         min2, max2 = channel.board_amp_ramp_range
@@ -259,7 +262,7 @@ class DDS(LabradServer):
         
         print minim_slope
         
-        print "t2 in amp ramp rate is ", amp_ramp_rate
+        #print "t2 in amp ramp rate is ", amp_ramp_rate
 
         ### calculate here
         num = self.settings_to_num(channel, freq, ampl, 0.0, ramp_rate, amp_ramp_rate)
@@ -329,11 +332,11 @@ class DDS(LabradServer):
         return num
     
     def _valToInt_coherent(self, channel, freq, ampl, phase = 0, ramp_rate = 0, amp_ramp_rate = 0): ### add ramp for ramping functionality
-        '''
-        takes the frequency and amplitude values for the specific channel and returns integer representation of the dds setting
-        freq is in MHz
-        power is in dbm
-        '''
+        #'''
+        #takes the frequency and amplitude values for the specific channel and returns integer representation of the dds setting
+        #freq is in MHz
+        #power is in dbm
+        #'''
         ans = 0
         ## changed the precision from 32 to 64 to handle super fine frequency tuning
         for val,r,m, precision in [(freq,channel.boardfreqrange, 1, 64), (ampl,channel.boardamplrange, 2 ** 64,  16), (phase,channel.boardphaserange, 2**80, 16)]:
@@ -355,7 +358,7 @@ class DDS(LabradServer):
         else:
             seq = int((ramp_rate-minim)/resolution)  
             
-        print "t1 in ramp rate integer is, ", seq
+        #print "t1 in ramp rate integer is, ", seq
         
         ans += 2**96*seq 
         
@@ -373,7 +376,7 @@ class DDS(LabradServer):
             slope = 1/amp_ramp_rate
             seq_amp_ramp = int(np.ceil((slope - minim_slope)/resolution))  # return ceiling of the number
         
-        print "t2 in amp ramp rate integer is, ", seq_amp_ramp
+        #print "t2 in amp ramp rate integer is, ", seq_amp_ramp
             
         ans += 2**112*seq_amp_ramp
         
