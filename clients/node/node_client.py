@@ -14,7 +14,7 @@ except:
 nodeDict = {
             'node Yb_ion':
                 ['Data Vault',
-                 #'Andor Server',
+                 'Andor Server',
                 #'NI Analog Server',
                 'NormalPMTFlow',
                 #'SD Tracker',
